@@ -1,0 +1,41 @@
+package com.mega.board.controller;
+
+import com.mega.board.dto.BoardDto;
+import com.mega.board.service.BoardService;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+//@RestController // 컨트롤러를 JSON 을 반환하는 컨트롤러로 만들어줌, @Controller + @ResponseBody view페이지가 없는 경우
+@Controller // 컨트롤러임을 명시하는 어노테이션, 메서드들은 반환 값으로 템플릿 경로를 작성하거나 redirect해줘야 함
+@AllArgsConstructor // Bean주입 방식과 관련이 있으며, 생성자로 Bean객체를 받는 방식을 해결해주는 어노테이션, BoardService에서 객체를 주입받을 때 @Autowired를 부여하지 않음
+public class BoardController {
+
+    private BoardService boardService;
+
+
+//    @GetMapping("/test") // HTTP 메소드인 Get의 요청을 받을 수 있는 API
+//    public String test() {
+//        return "Hello World!";
+//    }
+
+    @GetMapping("/")
+    public String list() {
+        return "board/list";
+    }
+
+    @GetMapping("/write")
+    public String write() {
+        return "board/write";
+    }
+
+    @PostMapping("/post")
+    public String write(BoardDto boardDto) {
+        boardService.savePost(boardDto);
+
+        return "redirect:/";
+    }
+
+}

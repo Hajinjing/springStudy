@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"> <!--타임리프 템플릿 적용-->
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--HEADER-->
+    <div th:insert = "common/header.html" id="header"></div> <!--th:insert 다른페이지를 현제페이지에 삽입-->
+
+    <a th:href="@{/post}">글쓰기</a> <!--예제에서 @{/post}는 URL이 http://localhost:8080/post -->
+
+<!--FOOTER-->
+    <div th:insert = "common/footer.html" id="footer"></div>
+
+</body>
+</html>
