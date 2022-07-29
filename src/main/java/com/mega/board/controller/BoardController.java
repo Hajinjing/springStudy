@@ -26,7 +26,7 @@ public class BoardController {
         return "board/list";
     }
 
-    @GetMapping("/write")
+    @GetMapping("/post")
     public String write() {
         return "board/write";
     }
